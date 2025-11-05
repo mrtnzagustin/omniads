@@ -84,10 +84,10 @@ export class WhatsAppService {
     // Send via Twilio
     try {
       const message = this.formatDigestMessage(digestData);
-      await this.twilioApi.sendWhatsAppMessage(
-        subscription.phoneNumber,
-        message,
-      );
+      await this.twilioApi.sendWhatsAppMessage({
+        to: subscription.phoneNumber,
+        body: message,
+      });
 
       digest.status = DigestStatus.SENT;
       digest.sentAt = new Date();
