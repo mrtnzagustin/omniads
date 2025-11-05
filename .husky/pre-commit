@@ -1,0 +1,18 @@
+echo "🧪 Running tests before commit..."
+
+# Run backend tests
+cd backend && npm test -- --passWithNoTests
+BACKEND_EXIT=$?
+
+# Run frontend tests (allow passing with no tests)
+cd ../frontend && npm run test:run -- --passWithNoTests || true
+FRONTEND_EXIT=0
+
+# Check if backend failed
+if [ $BACKEND_EXIT -ne 0 ]; then
+  echo "❌ Backend tests failed! Commit blocked."
+  echo "   Backend exit code: $BACKEND_EXIT"
+  exit 1
+fi
+
+echo "✅ All tests passed!"

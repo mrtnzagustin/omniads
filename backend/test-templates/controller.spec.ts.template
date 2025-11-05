@@ -1,0 +1,98 @@
+import { Test, TestingModule } from '@nestjs/testing';
+import { ControllerName } from './controller-name.controller';
+import { ServiceName } from './service-name.service';
+import { DtoName } from './dto/dto-name.dto';
+
+describe('ControllerName', () => {
+  let controller: ControllerName;
+  let service: jest.Mocked<ServiceName>;
+
+  const mockResponse = {
+    id: '123',
+    // Add response properties
+  };
+
+  beforeEach(async () => {
+    const mockService = {
+      methodName: jest.fn(),
+      create: jest.fn(),
+      findAll: jest.fn(),
+      findOne: jest.fn(),
+      update: jest.fn(),
+      remove: jest.fn(),
+    };
+
+    const module: TestingModule = await Test.createTestingModule({
+      controllers: [ControllerName],
+      providers: [
+        {
+          provide: ServiceName,
+          useValue: mockService,
+        },
+      ],
+    }).compile();
+
+    controller = module.get<ControllerName>(ControllerName);
+    service = module.get(ServiceName) as jest.Mocked<ServiceName>;
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  describe('methodName', () => {
+    it('should call service method and return result', async () => {
+      // Arrange
+      const dto: DtoName = {
+        // Add DTO properties
+      };
+      service.methodName.mockResolvedValue(mockResponse);
+
+      // Act
+      const result = await controller.methodName(dto);
+
+      // Assert
+      expect(service.methodName).toHaveBeenCalledWith(dto);
+      expect(result).toEqual(mockResponse);
+    });
+
+    it('should propagate service errors', async () => {
+      // Arrange
+      const dto: DtoName = {};
+      const error = new Error('Service error');
+      service.methodName.mockRejectedValue(error);
+
+      // Act & Assert
+      await expect(controller.methodName(dto)).rejects.toThrow(error);
+      expect(service.methodName).toHaveBeenCalledWith(dto);
+    });
+  });
+
+  describe('findAll', () => {
+    it('should return an array of items', async () => {
+      // Arrange
+      const mockItems = [mockResponse];
+      service.findAll.mockResolvedValue(mockItems);
+
+      // Act
+      const result = await controller.findAll();
+
+      // Assert
+      expect(service.findAll).toHaveBeenCalled();
+      expect(result).toEqual(mockItems);
+    });
+
+    it('should return empty array when no items exist', async () => {
+      // Arrange
+      service.findAll.mockResolvedValue([]);
+
+      // Act
+      const result = await controller.findAll();
+
+      // Assert
+      expect(result).toEqual([]);
+    });
+  });
+
+  // Add more describe blocks for other endpoints
+});

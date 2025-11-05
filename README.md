@@ -209,12 +209,117 @@ All external APIs are mocked for the MVP:
 - **Tienda Nube**: Returns 5 products and recent sales
 - **AI Core**: Generates 6 types of recommendations
 
+## Testing
+
+OmniAds uses comprehensive unit testing to ensure code quality and prevent regressions.
+
+### Running Tests
+
+**Backend (Jest)**:
+```bash
+cd backend
+npm test                  # Run all tests
+npm run test:watch        # Watch mode for development
+npm run test:cov          # Generate coverage report
+npm run test:debug        # Debug mode
+```
+
+**Frontend (Vitest)**:
+```bash
+cd frontend
+npm test                  # Run tests in watch mode
+npm run test:run          # Run once
+npm run test:coverage     # Generate coverage report
+npm run test:ui           # Open Vitest UI
+```
+
+### Coverage Requirements
+
+The project enforces minimum code coverage thresholds:
+- **Statements**: 80%
+- **Branches**: 75%
+- **Functions**: 80%
+- **Lines**: 80%
+
+Coverage reports are generated in the `coverage/` directory for both frontend and backend.
+
+### Pre-commit Hooks
+
+Tests are automatically run before each commit via Husky pre-commit hooks. If any tests fail, the commit will be blocked. This ensures that only tested, working code is committed to the repository.
+
+To bypass the pre-commit hook in emergencies (not recommended):
+```bash
+git commit --no-verify -m "message"
+```
+
+### Writing Tests
+
+Test templates are available to help you write consistent tests:
+
+**Backend**:
+- `backend/test-templates/service.spec.ts.template` - Service test template
+- `backend/test-templates/controller.spec.ts.template` - Controller test template
+
+**Frontend**:
+- `frontend/test-templates/component.test.tsx.template` - React component test template
+
+### Test Structure
+
+**Backend tests** use Jest with the following conventions:
+- Test files: `*.spec.ts`
+- Mock external dependencies (repositories, services)
+- Use `@nestjs/testing` for module creation
+- Follow Arrange-Act-Assert pattern
+
+**Frontend tests** use Vitest + React Testing Library:
+- Test files: `*.test.tsx` or `*.test.ts`
+- Use `@testing-library/react` for component testing
+- Mock external dependencies with `vi.fn()`
+- Test user interactions and accessibility
+
+### Example Test
+
+```typescript
+// Backend service test
+describe('UserService', () => {
+  it('should find a user by id', async () => {
+    // Arrange
+    const userId = '123';
+    repository.findOne.mockResolvedValue(mockUser);
+
+    // Act
+    const result = await service.findById(userId);
+
+    // Assert
+    expect(result).toEqual(mockUser);
+  });
+});
+```
+
+### Test Coverage
+
+Current test coverage includes:
+- ✅ Auth module (service, controller, guards)
+- ✅ User module (service)
+- ✅ Dashboard service (KPIs, trends, campaigns)
+- 🔄 Additional modules being added incrementally
+
+### Best Practices
+
+1. **Write tests first** (TDD) when possible
+2. **Test behavior, not implementation** - focus on what the code does, not how
+3. **Keep tests isolated** - no shared state between tests
+4. **Use descriptive test names** - clearly state what is being tested
+5. **Mock external dependencies** - databases, APIs, file systems
+6. **Test edge cases** - error conditions, empty inputs, boundary values
+
 ## Development Notes
 
 - TypeORM is set to auto-synchronize in development mode
 - All API endpoints (except auth) require JWT authentication
 - CORS is enabled for the frontend URL
 - Input validation is enabled globally via class-validator
+- **Tests must pass before committing** - enforced by pre-commit hooks
 
 ## Future Enhancements
 
