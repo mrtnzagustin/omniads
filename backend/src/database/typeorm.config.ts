@@ -35,6 +35,27 @@ import { RecommendationCache } from './entities/recommendation-cache.entity';
 import { AIAnalysis } from './entities/ai-analysis.entity';
 import { AIAnalysisOutcome } from './entities/ai-analysis-outcome.entity';
 import { AIAnalysisFeedback } from './entities/ai-analysis-feedback.entity';
+// Features 027-046: New Features
+import { AIAgent } from './entities/ai_agent.entity';
+import { AutopilotConfig } from './entities/autopilot_config.entity';
+import { IntentModel } from './entities/intent_model.entity';
+import { DataCollectionForm } from './entities/data_collection_form.entity';
+import { ContextualTargetingConfig } from './entities/contextual_targeting_config.entity';
+import { DataEnrichmentConfig } from './entities/data_enrichment_config.entity';
+import { JourneyConfig } from './entities/journey_config.entity';
+import { FrequencyConfig } from './entities/frequency_config.entity';
+import { SequentialMessageConfig } from './entities/sequential_message_config.entity';
+import { VideoAsset } from './entities/video_asset.entity';
+import { LandingPageTemplate } from './entities/landing_page_template.entity';
+import { ARVRExperience } from './entities/ar_vr_experience.entity';
+import { RecommendationModel } from './entities/recommendation_model.entity';
+import { LookalikeModel } from './entities/lookalike_model.entity';
+import { PersonalizationRule } from './entities/personalization_rule.entity';
+import { IncrementalityTest } from './entities/incrementality_test.entity';
+import { MMMModel } from './entities/mmm_model.entity';
+import { SentimentMonitor } from './entities/sentiment_monitor.entity';
+import { WhatsAppSession } from './entities/whats_app_session.entity';
+import { InfluencerProfile } from './entities/influencer_profile.entity';
 
 config();
 
@@ -81,6 +102,27 @@ export const dataSourceOptions: DataSourceOptions = {
     AIAnalysis,
     AIAnalysisOutcome,
     AIAnalysisFeedback,
+    // Features 027-046
+    AIAgent,
+    AutopilotConfig,
+    IntentModel,
+    DataCollectionForm,
+    ContextualTargetingConfig,
+    DataEnrichmentConfig,
+    JourneyConfig,
+    FrequencyConfig,
+    SequentialMessageConfig,
+    VideoAsset,
+    LandingPageTemplate,
+    ARVRExperience,
+    RecommendationModel,
+    LookalikeModel,
+    PersonalizationRule,
+    IncrementalityTest,
+    MMMModel,
+    SentimentMonitor,
+    WhatsAppSession,
+    InfluencerProfile,
   ],
   synchronize: process.env.NODE_ENV === 'development', // Auto-sync in dev only
   logging: process.env.NODE_ENV === 'development',
