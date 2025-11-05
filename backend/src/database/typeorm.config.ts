@@ -28,6 +28,9 @@ import { WhatsAppSubscription } from './entities/whatsapp-subscription.entity';
 import { WhatsAppDigest } from './entities/whatsapp-digest.entity';
 import { WhatsAppActionToken } from './entities/whatsapp-action-token.entity';
 import { WhatsAppConversationLog } from './entities/whatsapp-conversation-log.entity';
+// Feature 006: Unmock AI Integration
+import { AIRequestLog } from './entities/ai-request-log.entity';
+import { RecommendationCache } from './entities/recommendation-cache.entity';
 
 config();
 
@@ -67,6 +70,9 @@ export const dataSourceOptions: DataSourceOptions = {
     WhatsAppDigest,
     WhatsAppActionToken,
     WhatsAppConversationLog,
+    // Feature 006
+    AIRequestLog,
+    RecommendationCache,
   ],
   synchronize: process.env.NODE_ENV === 'development', // Auto-sync in dev only
   logging: process.env.NODE_ENV === 'development',
