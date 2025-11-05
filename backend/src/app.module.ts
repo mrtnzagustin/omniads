@@ -74,6 +74,27 @@ import { GamificationLoyaltyModule } from './gamification-loyalty/gamification-l
 import { SocialListeningModule } from './social-listening/social-listening.module';
 import { EconomicTrendAnalysisModule } from './economic-trend-analysis/economic-trend-analysis.module';
 import { SubscriptionRetentionModule } from './subscription-retention/subscription-retention.module';
+// Features 068-087
+import { OpportunityScorerModule } from './opportunity-scorer/opportunity-scorer.module';
+import { AICreativeTestingArenaModule } from './ai-creative-testing-arena/ai-creative-testing-arena.module';
+import { SentimentDrivenBudgetAllocatorModule } from './sentiment-driven-budget-allocator/sentiment-driven-budget-allocator.module';
+import { CompetitiveAdIntelligenceClonerModule } from './competitive-ad-intelligence-cloner/competitive-ad-intelligence-cloner.module';
+import { ROASGuaranteeEngineModule } from './roas-guarantee-engine/roas-guarantee-engine.module';
+import { InfluencerPerformancePredictorModule } from './influencer-performance-predictor/influencer-performance-predictor.module';
+import { DynamicLandingPageGeneratorModule } from './dynamic-landing-page-generator/dynamic-landing-page-generator.module';
+import { SmartCreativeAutoRefreshModule } from './smart-creative-auto-refresh/smart-creative-auto-refresh.module';
+import { VoiceSearchAdOptimizerModule } from './voice-search-ad-optimizer/voice-search-ad-optimizer.module';
+import { RetailMediaNetworkHubModule } from './retail-media-network-hub/retail-media-network-hub.module';
+import { AICopywriterMultivariateModule } from './ai-copywriter-multivariate/ai-copywriter-multivariate.module';
+import { CrossPlatformSymphonyIntegrationModule } from './cross-platform-symphony-integration/cross-platform-symphony-integration.module';
+import { SmartBudgetInsurancePoolModule } from './smart-budget-insurance-pool/smart-budget-insurance-pool.module';
+import { RealtimeCompetitorBidMonitorModule } from './realtime-competitor-bid-monitor/realtime-competitor-bid-monitor.module';
+import { UnifiedSocialInboxModule } from './unified-social-inbox/unified-social-inbox.module';
+import { AIMaxCampaignReplicatorModule } from './ai-max-campaign-replicator/ai-max-campaign-replicator.module';
+import { CustomerLifecycleJourneyMapperModule } from './customer-lifecycle-journey-mapper/customer-lifecycle-journey-mapper.module';
+import { CrossPlatformBroadMatchOptimizerModule } from './cross-platform-broad-match-optimizer/cross-platform-broad-match-optimizer.module';
+import { SustainabilityAdImpactScorerModule } from './sustainability-ad-impact-scorer/sustainability-ad-impact-scorer.module';
+import { FirstPartyDataEnrichmentHubModule } from './first-party-data-enrichment-hub/first-party-data-enrichment-hub.module';
 
 @Module({
   imports: [
@@ -152,6 +173,27 @@ import { SubscriptionRetentionModule } from './subscription-retention/subscripti
     SocialListeningModule,
     EconomicTrendAnalysisModule,
     SubscriptionRetentionModule,
+    // Features 068-087
+    OpportunityScorerModule,
+    AICreativeTestingArenaModule,
+    SentimentDrivenBudgetAllocatorModule,
+    CompetitiveAdIntelligenceClonerModule,
+    ROASGuaranteeEngineModule,
+    InfluencerPerformancePredictorModule,
+    DynamicLandingPageGeneratorModule,
+    SmartCreativeAutoRefreshModule,
+    VoiceSearchAdOptimizerModule,
+    RetailMediaNetworkHubModule,
+    AICopywriterMultivariateModule,
+    CrossPlatformSymphonyIntegrationModule,
+    SmartBudgetInsurancePoolModule,
+    RealtimeCompetitorBidMonitorModule,
+    UnifiedSocialInboxModule,
+    AIMaxCampaignReplicatorModule,
+    CustomerLifecycleJourneyMapperModule,
+    CrossPlatformBroadMatchOptimizerModule,
+    SustainabilityAdImpactScorerModule,
+    FirstPartyDataEnrichmentHubModule,
   ],
   controllers: [AppController],
   providers: [AppService],
