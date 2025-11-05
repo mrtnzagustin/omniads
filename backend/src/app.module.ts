@@ -53,6 +53,27 @@ import { AlertRulesModule } from './alert-rules/alert-rules.module';
 import { ProductAnalyticsModule } from './product-analytics/product-analytics.module';
 import { LTVAnalysisModule } from './ltv-analysis/ltv-analysis.module';
 import { BudgetScenariosModule } from './budget-scenarios/budget-scenarios.module';
+// Features 048-067
+import { AIAgenticCampaignModule } from './ai-agentic-campaign/ai-agentic-campaign.module';
+import { RealTimeBidOptimizationModule } from './real-time-bid-optimization/real-time-bid-optimization.module';
+import { AIVideoCreativeStudioModule } from './ai-video-creative-studio/ai-video-creative-studio.module';
+import { PrivacyFirstAnalyticsModule } from './privacy-first-analytics/privacy-first-analytics.module';
+import { CrossDeviceJourneyModule } from './cross-device-journey/cross-device-journey.module';
+import { AdFraudProtectionModule } from './ad-fraud-protection/ad-fraud-protection.module';
+import { DeepLearningAudienceModule } from './deep-learning-audience/deep-learning-audience.module';
+import { VoiceSearchOptimizationModule } from './voice-search-optimization/voice-search-optimization.module';
+import { StreamingPodcastAdModule } from './streaming-podcast/streaming-podcast.module';
+import { RetailMediaNetworkModule } from './retail-media-network/retail-media-network.module';
+import { ConnectedTVCampaignModule } from './connected-tv-campaign/connected-tv-campaign.module';
+import { SustainabilityCarbonModule } from './sustainability-carbon/sustainability-carbon.module';
+import { BlockchainAdVerificationModule } from './blockchain-ad-verification/blockchain-ad-verification.module';
+import { CreatorInfluencerCRMModule } from './creator-influencer-crm/creator-influencer-crm.module';
+import { Web3MetaverseModule } from './web3-metaverse/web3-metaverse.module';
+import { AICustomerServiceModule } from './ai-customer-service/ai-customer-service.module';
+import { GamificationLoyaltyModule } from './gamification-loyalty/gamification-loyalty.module';
+import { SocialListeningModule } from './social-listening/social-listening.module';
+import { EconomicTrendAnalysisModule } from './economic-trend-analysis/economic-trend-analysis.module';
+import { SubscriptionRetentionModule } from './subscription-retention/subscription-retention.module';
 
 @Module({
   imports: [
@@ -110,6 +131,27 @@ import { BudgetScenariosModule } from './budget-scenarios/budget-scenarios.modul
     ProductAnalyticsModule,
     LTVAnalysisModule,
     BudgetScenariosModule,
+    // Features 048-067
+    AIAgenticCampaignModule,
+    RealTimeBidOptimizationModule,
+    AIVideoCreativeStudioModule,
+    PrivacyFirstAnalyticsModule,
+    CrossDeviceJourneyModule,
+    AdFraudProtectionModule,
+    DeepLearningAudienceModule,
+    VoiceSearchOptimizationModule,
+    StreamingPodcastAdModule,
+    RetailMediaNetworkModule,
+    ConnectedTVCampaignModule,
+    SustainabilityCarbonModule,
+    BlockchainAdVerificationModule,
+    CreatorInfluencerCRMModule,
+    Web3MetaverseModule,
+    AICustomerServiceModule,
+    GamificationLoyaltyModule,
+    SocialListeningModule,
+    EconomicTrendAnalysisModule,
+    SubscriptionRetentionModule,
   ],
   controllers: [AppController],
   providers: [AppService],

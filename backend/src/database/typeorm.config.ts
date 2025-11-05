@@ -56,6 +56,29 @@ import { MMMModel } from './entities/mmm_model.entity';
 import { SentimentMonitor } from './entities/sentiment_monitor.entity';
 import { WhatsAppSession } from './entities/whats_app_session.entity';
 import { InfluencerProfile } from './entities/influencer_profile.entity';
+// Features 048-067
+import { AIAgent as AIAgentEntity } from './entities/ai-agent.entity';
+import { AgentDecision } from './entities/agent-decision.entity';
+import { AgentOutcome } from './entities/agent-outcome.entity';
+import { RealTimeBidOptimizationEntity } from './entities/real-time-bid-optimization-main.entity';
+import { AIVideoCreativeStudioEntity } from './entities/ai-video-creative-studio-main.entity';
+import { PrivacyFirstAnalyticsEntity } from './entities/privacy-first-analytics-main.entity';
+import { CrossDeviceJourneyEntity } from './entities/cross-device-journey-main.entity';
+import { AdFraudProtectionEntity } from './entities/ad-fraud-protection-main.entity';
+import { DeepLearningAudienceEntity } from './entities/deep-learning-audience-main.entity';
+import { VoiceSearchOptimizationEntity } from './entities/voice-search-optimization-main.entity';
+import { StreamingPodcastAdEntity } from './entities/streaming-podcast-main.entity';
+import { RetailMediaNetworkEntity } from './entities/retail-media-network-main.entity';
+import { ConnectedTVCampaignEntity } from './entities/connected-tv-campaign-main.entity';
+import { SustainabilityCarbonEntity } from './entities/sustainability-carbon-main.entity';
+import { BlockchainAdVerificationEntity } from './entities/blockchain-ad-verification-main.entity';
+import { CreatorInfluencerCRMEntity } from './entities/creator-influencer-crm-main.entity';
+import { Web3MetaverseEntity } from './entities/web3-metaverse-main.entity';
+import { AICustomerServiceEntity } from './entities/ai-customer-service-main.entity';
+import { GamificationLoyaltyEntity } from './entities/gamification-loyalty-main.entity';
+import { SocialListeningEntity } from './entities/social-listening-main.entity';
+import { EconomicTrendAnalysisEntity } from './entities/economic-trend-analysis-main.entity';
+import { SubscriptionRetentionEntity } from './entities/subscription-retention-main.entity';
 
 config();
 
@@ -123,6 +146,29 @@ export const dataSourceOptions: DataSourceOptions = {
     SentimentMonitor,
     WhatsAppSession,
     InfluencerProfile,
+    // Features 048-067
+    AIAgentEntity,
+    AgentDecision,
+    AgentOutcome,
+    RealTimeBidOptimizationEntity,
+    AIVideoCreativeStudioEntity,
+    PrivacyFirstAnalyticsEntity,
+    CrossDeviceJourneyEntity,
+    AdFraudProtectionEntity,
+    DeepLearningAudienceEntity,
+    VoiceSearchOptimizationEntity,
+    StreamingPodcastAdEntity,
+    RetailMediaNetworkEntity,
+    ConnectedTVCampaignEntity,
+    SustainabilityCarbonEntity,
+    BlockchainAdVerificationEntity,
+    CreatorInfluencerCRMEntity,
+    Web3MetaverseEntity,
+    AICustomerServiceEntity,
+    GamificationLoyaltyEntity,
+    SocialListeningEntity,
+    EconomicTrendAnalysisEntity,
+    SubscriptionRetentionEntity,
   ],
   synchronize: process.env.NODE_ENV === 'development', // Auto-sync in dev only
   logging: process.env.NODE_ENV === 'development',
