@@ -116,6 +116,27 @@ import { CustomerDataPlatformBridgeModule } from './customer-data-platform-bridg
 import { BrandSafetyAiGuardianModule } from './brand-safety-ai-guardian/brand-safety-ai-guardian.module';
 import { MultiTouchAttributionProModule } from './multi-touch-attribution-pro/multi-touch-attribution-pro.module';
 import { CampaignPerformancePredictorModule } from './campaign-performance-predictor/campaign-performance-predictor.module';
+// Features 108-127
+import { MultiBrandOrchestratorModule } from './multi-brand-orchestrator/multi-brand-orchestrator.module';
+import { ContextualMomentTargetingModule } from './contextual-moment-targeting/contextual-moment-targeting.module';
+import { CrossPlatformCreativeSyncerModule } from './cross-platform-creative-syncer/cross-platform-creative-syncer.module';
+import { AiSpendVelocityControllerModule } from './ai-spend-velocity-controller/ai-spend-velocity-controller.module';
+import { CompetitorBudgetMirrorModule } from './competitor-budget-mirror/competitor-budget-mirror.module';
+import { DynamicLookalikeGeneratorModule } from './dynamic-lookalike-generator/dynamic-lookalike-generator.module';
+import { SmartCampaignClonerModule } from './smart-campaign-cloner/smart-campaign-cloner.module';
+import { PredictiveChurnRetargetingModule } from './predictive-churn-retargeting/predictive-churn-retargeting.module';
+import { AiSeasonalityPlannerModule } from './ai-seasonality-planner/ai-seasonality-planner.module';
+import { CreativeElementMixerModule } from './creative-element-mixer/creative-element-mixer.module';
+import { RealtimeSentimentOptimizerModule } from './realtime-sentiment-optimizer/realtime-sentiment-optimizer.module';
+import { MultiObjectiveBalancerModule } from './multi-objective-balancer/multi-objective-balancer.module';
+import { IntelligentFrequencyCapperModule } from './intelligent-frequency-capper/intelligent-frequency-capper.module';
+import { PlatformPerformanceAllocatorModule } from './platform-performance-allocator/platform-performance-allocator.module';
+import { AiComplianceGuardianModule } from './ai-compliance-guardian/ai-compliance-guardian.module';
+import { PredictiveLifetimeBudgetModule } from './predictive-lifetime-budget/predictive-lifetime-budget.module';
+import { CrossCampaignSynthesizerModule } from './cross-campaign-synthesizer/cross-campaign-synthesizer.module';
+import { DynamicOfferOptimizerModule } from './dynamic-offer-optimizer/dynamic-offer-optimizer.module';
+import { AiTestDesignerModule } from './ai-test-designer/ai-test-designer.module';
+import { SmartCampaignPauserModule } from './smart-campaign-pauser/smart-campaign-pauser.module';
 
 @Module({
   imports: [
@@ -236,6 +257,27 @@ import { CampaignPerformancePredictorModule } from './campaign-performance-predi
     BrandSafetyAiGuardianModule,
     MultiTouchAttributionProModule,
     CampaignPerformancePredictorModule,
+    // Features 108-127
+    MultiBrandOrchestratorModule,
+    ContextualMomentTargetingModule,
+    CrossPlatformCreativeSyncerModule,
+    AiSpendVelocityControllerModule,
+    CompetitorBudgetMirrorModule,
+    DynamicLookalikeGeneratorModule,
+    SmartCampaignClonerModule,
+    PredictiveChurnRetargetingModule,
+    AiSeasonalityPlannerModule,
+    CreativeElementMixerModule,
+    RealtimeSentimentOptimizerModule,
+    MultiObjectiveBalancerModule,
+    IntelligentFrequencyCapperModule,
+    PlatformPerformanceAllocatorModule,
+    AiComplianceGuardianModule,
+    PredictiveLifetimeBudgetModule,
+    CrossCampaignSynthesizerModule,
+    DynamicOfferOptimizerModule,
+    AiTestDesignerModule,
+    SmartCampaignPauserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
