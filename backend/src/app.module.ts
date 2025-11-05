@@ -95,6 +95,27 @@ import { CustomerLifecycleJourneyMapperModule } from './customer-lifecycle-journ
 import { CrossPlatformBroadMatchOptimizerModule } from './cross-platform-broad-match-optimizer/cross-platform-broad-match-optimizer.module';
 import { SustainabilityAdImpactScorerModule } from './sustainability-ad-impact-scorer/sustainability-ad-impact-scorer.module';
 import { FirstPartyDataEnrichmentHubModule } from './first-party-data-enrichment-hub/first-party-data-enrichment-hub.module';
+// Features 088-107 (New Implementation)
+import { AiConversationAdsBuilderModule } from './ai-conversation-ads-builder/ai-conversation-ads-builder.module';
+import { DynamicVideoRemixerModule } from './dynamic-video-remixer/dynamic-video-remixer.module';
+import { PredictiveLtvAudienceBuilderModule } from './predictive-ltv-audience-builder/predictive-ltv-audience-builder.module';
+import { HyperPersonalizationEngineModule } from './hyper-personalization-engine/hyper-personalization-engine.module';
+import { ContextualAiTargetingHubModule } from './contextual-ai-targeting-hub/contextual-ai-targeting-hub.module';
+import { MultiPlatformAccelerateModule } from './multi-platform-accelerate/multi-platform-accelerate.module';
+import { AdvancedIncrementalitySuiteModule } from './advanced-incrementality-suite/advanced-incrementality-suite.module';
+import { PrivacyFirstAttributionModelModule } from './privacy-first-attribution-model/privacy-first-attribution-model.module';
+import { AiCreativeTherapyModule } from './ai-creative-therapy/ai-creative-therapy.module';
+import { AudioAdsStudioModule } from './audio-ads-studio/audio-ads-studio.module';
+import { MicroInfluencerDiscoveryAiModule } from './micro-influencer-discovery-ai/micro-influencer-discovery-ai.module';
+import { RetentionMarketingAutopilotModule } from './retention-marketing-autopilot/retention-marketing-autopilot.module';
+import { DynamicProductFeedOptimizerModule } from './dynamic-product-feed-optimizer/dynamic-product-feed-optimizer.module';
+import { UnifiedAudienceSegmentationModule } from './unified-audience-segmentation/unified-audience-segmentation.module';
+import { PredictiveBudgetAllocatorProModule } from './predictive-budget-allocator-pro/predictive-budget-allocator-pro.module';
+import { RealtimeCompetitiveIntelligenceModule } from './realtime-competitive-intelligence/realtime-competitive-intelligence.module';
+import { CustomerDataPlatformBridgeModule } from './customer-data-platform-bridge/customer-data-platform-bridge.module';
+import { BrandSafetyAiGuardianModule } from './brand-safety-ai-guardian/brand-safety-ai-guardian.module';
+import { MultiTouchAttributionProModule } from './multi-touch-attribution-pro/multi-touch-attribution-pro.module';
+import { CampaignPerformancePredictorModule } from './campaign-performance-predictor/campaign-performance-predictor.module';
 
 @Module({
   imports: [
@@ -194,6 +215,27 @@ import { FirstPartyDataEnrichmentHubModule } from './first-party-data-enrichment
     CrossPlatformBroadMatchOptimizerModule,
     SustainabilityAdImpactScorerModule,
     FirstPartyDataEnrichmentHubModule,
+    // Features 088-107
+    AiConversationAdsBuilderModule,
+    DynamicVideoRemixerModule,
+    PredictiveLtvAudienceBuilderModule,
+    HyperPersonalizationEngineModule,
+    ContextualAiTargetingHubModule,
+    MultiPlatformAccelerateModule,
+    AdvancedIncrementalitySuiteModule,
+    PrivacyFirstAttributionModelModule,
+    AiCreativeTherapyModule,
+    AudioAdsStudioModule,
+    MicroInfluencerDiscoveryAiModule,
+    RetentionMarketingAutopilotModule,
+    DynamicProductFeedOptimizerModule,
+    UnifiedAudienceSegmentationModule,
+    PredictiveBudgetAllocatorProModule,
+    RealtimeCompetitiveIntelligenceModule,
+    CustomerDataPlatformBridgeModule,
+    BrandSafetyAiGuardianModule,
+    MultiTouchAttributionProModule,
+    CampaignPerformancePredictorModule,
   ],
   controllers: [AppController],
   providers: [AppService],
