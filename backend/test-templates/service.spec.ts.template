@@ -1,0 +1,85 @@
+import { Test, TestingModule } from '@nestjs/testing';
+import { getRepositoryToken } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { ServiceName } from './service-name.service';
+import { EntityName } from '../database/entities/entity-name.entity';
+
+describe('ServiceName', () => {
+  let service: ServiceName;
+  let repository: jest.Mocked<Repository<EntityName>>;
+
+  const mockEntity: EntityName = {
+    id: '123',
+    // Add other entity properties
+    createdAt: new Date('2024-01-01'),
+    updatedAt: new Date('2024-01-01'),
+  };
+
+  beforeEach(async () => {
+    const mockRepository = {
+      find: jest.fn(),
+      findOne: jest.fn(),
+      create: jest.fn(),
+      save: jest.fn(),
+      update: jest.fn(),
+      delete: jest.fn(),
+    };
+
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [
+        ServiceName,
+        {
+          provide: getRepositoryToken(EntityName),
+          useValue: mockRepository,
+        },
+        // Add other service dependencies here
+      ],
+    }).compile();
+
+    service = module.get<ServiceName>(ServiceName);
+    repository = module.get(getRepositoryToken(EntityName)) as jest.Mocked<
+      Repository<EntityName>
+    >;
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  describe('methodName', () => {
+    it('should successfully perform the operation', async () => {
+      // Arrange
+      repository.findOne.mockResolvedValue(mockEntity);
+
+      // Act
+      const result = await service.methodName('param');
+
+      // Assert
+      expect(repository.findOne).toHaveBeenCalledWith({ where: { id: 'param' } });
+      expect(result).toEqual(mockEntity);
+    });
+
+    it('should handle error cases', async () => {
+      // Arrange
+      const error = new Error('Database error');
+      repository.findOne.mockRejectedValue(error);
+
+      // Act & Assert
+      await expect(service.methodName('param')).rejects.toThrow(error);
+      expect(repository.findOne).toHaveBeenCalled();
+    });
+
+    it('should return null when entity not found', async () => {
+      // Arrange
+      repository.findOne.mockResolvedValue(null);
+
+      // Act
+      const result = await service.methodName('nonexistent');
+
+      // Assert
+      expect(result).toBeNull();
+    });
+  });
+
+  // Add more describe blocks for other methods
+});

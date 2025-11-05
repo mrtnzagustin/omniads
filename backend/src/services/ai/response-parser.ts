@@ -6,13 +6,13 @@ import { AIRecommendation, RecommendationType } from '../ai-core.client';
  */
 const AIRecommendationSchema = z.object({
   type: z.enum([
-    RecommendationType.PAUSE_CAMPAIGN,
-    RecommendationType.SCALE_CAMPAIGN,
-    RecommendationType.BUDGET_SHIFT,
-    RecommendationType.COMPETITOR_PRICE,
-    RecommendationType.PROMOTE_ORGANIC,
-    RecommendationType.CREATE_BUNDLE,
-  ]),
+    'PAUSE_CAMPAIGN',
+    'SCALE_CAMPAIGN',
+    'BUDGET_SHIFT',
+    'COMPETITOR_PRICE',
+    'PROMOTE_ORGANIC',
+    'CREATE_BUNDLE',
+  ] as const),
   title: z.string().min(10).max(200),
   description: z.string().min(20).max(1000),
   data: z.record(z.any()),

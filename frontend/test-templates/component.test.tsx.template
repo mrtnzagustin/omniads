@@ -1,0 +1,81 @@
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { ComponentName } from './ComponentName';
+
+describe('ComponentName', () => {
+  const mockProps = {
+    // Add props here
+  };
+
+  const mockFunction = vi.fn();
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it('should render component correctly', () => {
+    // Arrange & Act
+    render(<ComponentName {...mockProps} />);
+
+    // Assert
+    expect(screen.getByText('Expected Text')).toBeInTheDocument();
+  });
+
+  it('should handle user interactions', async () => {
+    // Arrange
+    render(<ComponentName {...mockProps} onAction={mockFunction} />);
+
+    // Act
+    const button = screen.getByRole('button', { name: /action/i });
+    fireEvent.click(button);
+
+    // Assert
+    await waitFor(() => {
+      expect(mockFunction).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  it('should display props correctly', () => {
+    // Arrange
+    const props = {
+      title: 'Test Title',
+      description: 'Test Description',
+    };
+
+    // Act
+    render(<ComponentName {...props} />);
+
+    // Assert
+    expect(screen.getByText('Test Title')).toBeInTheDocument();
+    expect(screen.getByText('Test Description')).toBeInTheDocument();
+  });
+
+  it('should handle loading state', () => {
+    // Arrange & Act
+    render(<ComponentName {...mockProps} isLoading={true} />);
+
+    // Assert
+    expect(screen.getByText(/loading/i)).toBeInTheDocument();
+  });
+
+  it('should handle error state', () => {
+    // Arrange
+    const error = 'Something went wrong';
+
+    // Act
+    render(<ComponentName {...mockProps} error={error} />);
+
+    // Assert
+    expect(screen.getByText(error)).toBeInTheDocument();
+  });
+
+  it('should not render when condition is false', () => {
+    // Arrange & Act
+    render(<ComponentName {...mockProps} shouldRender={false} />);
+
+    // Assert
+    expect(screen.queryByTestId('component-name')).not.toBeInTheDocument();
+  });
+
+  // Add more test cases as needed
+});
