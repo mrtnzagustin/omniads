@@ -12,6 +12,7 @@ import { BudgetRebalancerModule } from './budget-rebalancer/budget-rebalancer.mo
 import { AnomalyAlertsModule } from './anomaly-alerts/anomaly-alerts.module';
 import { CreativeWorkbenchModule } from './creative-workbench/creative-workbench.module';
 import { WhatsAppModule } from './whatsapp/whatsapp.module';
+import { AIAnalysisModule } from './ai-analysis/ai-analysis.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { WhatsAppModule } from './whatsapp/whatsapp.module';
     AnomalyAlertsModule,
     CreativeWorkbenchModule,
     WhatsAppModule,
+    AIAnalysisModule,
   ],
   controllers: [AppController],
   providers: [AppService],
