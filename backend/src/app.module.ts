@@ -8,6 +8,10 @@ import { UserModule } from './user/user.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { RecommendationsModule } from './recommendations/recommendations.module';
 import { ServicesModule } from './services/services.module';
+import { BudgetRebalancerModule } from './budget-rebalancer/budget-rebalancer.module';
+import { AnomalyAlertsModule } from './anomaly-alerts/anomaly-alerts.module';
+import { CreativeWorkbenchModule } from './creative-workbench/creative-workbench.module';
+import { WhatsAppModule } from './whatsapp/whatsapp.module';
 
 @Module({
   imports: [
@@ -20,6 +24,10 @@ import { ServicesModule } from './services/services.module';
     DashboardModule,
     RecommendationsModule,
     ServicesModule,
+    BudgetRebalancerModule,
+    AnomalyAlertsModule,
+    CreativeWorkbenchModule,
+    WhatsAppModule,
   ],
   controllers: [AppController],
   providers: [AppService],

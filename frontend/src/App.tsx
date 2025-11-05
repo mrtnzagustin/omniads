@@ -6,6 +6,11 @@ import { Login } from './pages/Login';
 import { Dashboard } from './pages/Dashboard';
 import { Recommendations } from './pages/Recommendations';
 import { Opportunities } from './pages/Opportunities';
+import { BudgetRebalancer } from './pages/BudgetRebalancer';
+import { AnomalyAlerts } from './pages/AnomalyAlerts';
+import { CreativeWorkbench } from './pages/CreativeWorkbench';
+import { WorkflowDashboard } from './pages/WorkflowDashboard';
+import { WhatsAppCenter } from './pages/WhatsAppCenter';
 
 function App() {
   const checkAuth = useAuthStore((state) => state.checkAuth);
@@ -39,6 +44,46 @@ function App() {
           element={
             <ProtectedRoute>
               <Opportunities />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/budget-rebalancer"
+          element={
+            <ProtectedRoute>
+              <BudgetRebalancer />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/anomaly-alerts"
+          element={
+            <ProtectedRoute>
+              <AnomalyAlerts />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/creative-workbench"
+          element={
+            <ProtectedRoute>
+              <CreativeWorkbench />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/workflow"
+          element={
+            <ProtectedRoute>
+              <WorkflowDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/whatsapp"
+          element={
+            <ProtectedRoute>
+              <WhatsAppCenter />
             </ProtectedRoute>
           }
         />

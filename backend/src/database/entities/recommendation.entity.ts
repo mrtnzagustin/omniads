@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { User } from './user.entity';
 
 export enum RecommendationType {
   PAUSE_CAMPAIGN = 'PAUSE_CAMPAIGN',
@@ -12,7 +13,16 @@ export enum RecommendationType {
 export enum RecommendationStatus {
   NEW = 'NEW',
   VIEWED = 'VIEWED',
+  IN_PROGRESS = 'IN_PROGRESS',
+  DONE = 'DONE',
   ARCHIVED = 'ARCHIVED',
+}
+
+export enum RecommendationPriority {
+  P1 = 'P1', // Critical
+  P2 = 'P2', // High
+  P3 = 'P3', // Medium
+  P4 = 'P4', // Low
 }
 
 @Entity('recommendations')
@@ -42,6 +52,33 @@ export class Recommendation {
   })
   status: RecommendationStatus;
 
+  // Workflow fields (Feature 004)
+  @Column('uuid', { nullable: true })
+  ownerId: string;
+
+  @ManyToOne(() => User, { nullable: true })
+  @JoinColumn({ name: 'ownerId' })
+  owner: User;
+
+  @Column({ type: 'date', nullable: true })
+  dueDate: Date;
+
+  @Column({
+    type: 'enum',
+    enum: RecommendationPriority,
+    nullable: true,
+  })
+  priority: RecommendationPriority;
+
+  @Column('text', { nullable: true })
+  outcomeSummary: string;
+
+  @Column('simple-array', { nullable: true })
+  linkedTaskIds: string[];
+
   @CreateDateColumn()
   createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }
