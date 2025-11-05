@@ -140,26 +140,6 @@ import { SmartCampaignPauserModule } from './smart-campaign-pauser/smart-campaig
 // Features 128-147
 import { GenerativeAiCreativeStudioModule } from './generative-ai-creative-studio/generative-ai-creative-studio.module';
 
-import { IncrementalLiftMeasurementModule } from './incremental-lift-measurement/incremental-lift-measurement.module';
-import { ProfitAnalyticsDashboardModule } from './profit-analytics-dashboard/profit-analytics-dashboard.module';
-import { RealtimeBidOptimizerModule } from './realtime-bid-optimizer/realtime-bid-optimizer.module';
-import { MultiPlatformCreativeGeneratorModule } from './multi-platform-creative-generator/multi-platform-creative-generator.module';
-import { CustomerJourneyMapperModule } from './customer-journey-mapper/customer-journey-mapper.module';
-import { PredictiveLtvSegmentsModule } from './predictive-ltv-segments/predictive-ltv-segments.module';
-import { SocialCommerceHubModule } from './social-commerce-hub/social-commerce-hub.module';
-import { InfluencerCampaignManagerModule } from './influencer-campaign-manager/influencer-campaign-manager.module';
-import { SmsMarketingIntegrationModule } from './sms-marketing-integration/sms-marketing-integration.module';
-import { EmailAdSyncEngineModule } from './email-ad-sync-engine/email-ad-sync-engine.module';
-import { AdvancedAbTestFrameworkModule } from './advanced-ab-test-framework/advanced-ab-test-framework.module';
-import { WhiteLabelDashboardModule } from './white-label-dashboard/white-label-dashboard.module';
-import { MultiCurrencyManagerModule } from './multi-currency-manager/multi-currency-manager.module';
-import { DataWarehouseConnectorModule } from './data-warehouse-connector/data-warehouse-connector.module';
-import { ServerSideTrackingModule } from './server-side-tracking/server-side-tracking.module';
-import { CreativePerformanceAiModule } from './creative-performance-ai/creative-performance-ai.module';
-import { BudgetPacingControllerModule } from './budget-pacing-controller/budget-pacing-controller.module';
-import { AudienceOverlapAnalyzerModule } from './audience-overlap-analyzer/audience-overlap-analyzer.module';
-import { CrossDeviceAttributionModule } from './cross-device-attribution/cross-device-attribution.module';
-
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -302,26 +282,6 @@ import { CrossDeviceAttributionModule } from './cross-device-attribution/cross-d
     SmartCampaignPauserModule,
     // Features 128-147
     GenerativeAiCreativeStudioModule,
-    IncrementalLiftMeasurementModule,
-    ProfitAnalyticsDashboardModule,
-    RealtimeBidOptimizerModule,
-    MultiPlatformCreativeGeneratorModule,
-    CustomerJourneyMapperModule,
-    PredictiveLtvSegmentsModule,
-    SocialCommerceHubModule,
-    InfluencerCampaignManagerModule,
-    SmsMarketingIntegrationModule,
-    EmailAdSyncEngineModule,
-    AdvancedAbTestFrameworkModule,
-    WhiteLabelDashboardModule,
-    MultiCurrencyManagerModule,
-    DataWarehouseConnectorModule,
-    ServerSideTrackingModule,
-    CreativePerformanceAiModule,
-    BudgetPacingControllerModule,
-    AudienceOverlapAnalyzerModule,
-    CrossDeviceAttributionModule,
-
   ],
   controllers: [AppController],
   providers: [AppService],
