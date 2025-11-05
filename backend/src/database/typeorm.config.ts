@@ -31,6 +31,10 @@ import { WhatsAppConversationLog } from './entities/whatsapp-conversation-log.en
 // Feature 006: Unmock AI Integration
 import { AIRequestLog } from './entities/ai-request-log.entity';
 import { RecommendationCache } from './entities/recommendation-cache.entity';
+// Feature 007: AI Analysis History
+import { AIAnalysis } from './entities/ai-analysis.entity';
+import { AIAnalysisOutcome } from './entities/ai-analysis-outcome.entity';
+import { AIAnalysisFeedback } from './entities/ai-analysis-feedback.entity';
 
 config();
 
@@ -73,6 +77,10 @@ export const dataSourceOptions: DataSourceOptions = {
     // Feature 006
     AIRequestLog,
     RecommendationCache,
+    // Feature 007
+    AIAnalysis,
+    AIAnalysisOutcome,
+    AIAnalysisFeedback,
   ],
   synchronize: process.env.NODE_ENV === 'development', // Auto-sync in dev only
   logging: process.env.NODE_ENV === 'development',
