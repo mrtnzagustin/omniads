@@ -34,6 +34,25 @@ import { MMMModelModule } from './mmm/mmm.module';
 import { SentimentMonitorModule } from './sentiment/sentiment.module';
 import { WhatsAppSessionModule } from './whatsapp-commerce/whatsapp-commerce.module';
 import { InfluencerProfileModule } from './influencer/influencer.module';
+import { ScheduledJobsModule } from './scheduled-jobs/scheduled-jobs.module';
+import { AttributionModule } from './attribution/attribution.module';
+// Specs 010-026 Modules
+import { ForecastingModule } from './forecasting/forecasting.module';
+import { CompetitorIntelligenceModule } from './competitor-intelligence/competitor-intelligence.module';
+import { KeywordIntelligenceModule } from './keyword-intelligence/keyword-intelligence.module';
+import { DisplayAdTrackerModule } from './display-ad-tracker/display-ad-tracker.module';
+import { CreativeTestingModule } from './creative-testing/creative-testing.module';
+import { AdCopyGeneratorModule } from './ad-copy-generator/ad-copy-generator.module';
+import { CreativeFatigueModule } from './creative-fatigue/creative-fatigue.module';
+import { CampaignBenchmarkingModule } from './campaign-benchmarking/campaign-benchmarking.module';
+import { ExportEngineModule } from './export-engine/export-engine.module';
+import { GeoAnalyticsModule } from './geo-analytics/geo-analytics.module';
+import { CollaborationModule } from './collaboration/collaboration.module';
+import { ApprovalWorkflowsModule } from './approval-workflows/approval-workflows.module';
+import { AlertRulesModule } from './alert-rules/alert-rules.module';
+import { ProductAnalyticsModule } from './product-analytics/product-analytics.module';
+import { LTVAnalysisModule } from './ltv-analysis/ltv-analysis.module';
+import { BudgetScenariosModule } from './budget-scenarios/budget-scenarios.module';
 
 @Module({
   imports: [
@@ -51,7 +70,7 @@ import { InfluencerProfileModule } from './influencer/influencer.module';
     CreativeWorkbenchModule,
     WhatsAppModule,
     AIAnalysisModule,
-    // New Feature Modules
+    // New Feature Modules (027-046)
     AIAgentModule,
     AutopilotConfigModule,
     IntentModelModule,
@@ -72,6 +91,25 @@ import { InfluencerProfileModule } from './influencer/influencer.module';
     SentimentMonitorModule,
     WhatsAppSessionModule,
     InfluencerProfileModule,
+    ScheduledJobsModule,
+    AttributionModule,
+    // Specs 010-026 Modules
+    ForecastingModule,
+    CompetitorIntelligenceModule,
+    KeywordIntelligenceModule,
+    DisplayAdTrackerModule,
+    CreativeTestingModule,
+    AdCopyGeneratorModule,
+    CreativeFatigueModule,
+    CampaignBenchmarkingModule,
+    ExportEngineModule,
+    GeoAnalyticsModule,
+    CollaborationModule,
+    ApprovalWorkflowsModule,
+    AlertRulesModule,
+    ProductAnalyticsModule,
+    LTVAnalysisModule,
+    BudgetScenariosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
