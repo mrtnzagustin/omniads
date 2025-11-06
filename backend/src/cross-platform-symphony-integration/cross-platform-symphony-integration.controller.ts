@@ -8,7 +8,7 @@ import {
   Body,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CrossPlatformSymphonyIntegrationService } from './cross-platform-symphony-integration.service';
 
 @Controller('api/v1/cross-platform-symphony-integration')

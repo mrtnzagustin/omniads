@@ -8,7 +8,7 @@ import {
   Body,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { RetailMediaNetworkHubService } from './retail-media-network-hub.service';
 
 @Controller('api/v1/retail-media-network-hub')

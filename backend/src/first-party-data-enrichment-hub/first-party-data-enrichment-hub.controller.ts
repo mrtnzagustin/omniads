@@ -8,7 +8,7 @@ import {
   Body,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { FirstPartyDataEnrichmentHubService } from './first-party-data-enrichment-hub.service';
 
 @Controller('api/v1/first-party-data-enrichment-hub')

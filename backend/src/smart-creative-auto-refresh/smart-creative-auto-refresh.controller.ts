@@ -8,7 +8,7 @@ import {
   Body,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { SmartCreativeAutoRefreshService } from './smart-creative-auto-refresh.service';
 
 @Controller('api/v1/smart-creative-auto-refresh')

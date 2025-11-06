@@ -8,7 +8,7 @@ import {
   Body,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { AIMaxCampaignReplicatorService } from './ai-max-campaign-replicator.service';
 
 @Controller('api/v1/ai-max-campaign-replicator')

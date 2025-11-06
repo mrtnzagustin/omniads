@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { DataWarehouseConnectorService } from './data-warehouse-connector.service';
 import { DataWarehouseConnector } from '../database/entities/data-warehouse-connector.entity';
 

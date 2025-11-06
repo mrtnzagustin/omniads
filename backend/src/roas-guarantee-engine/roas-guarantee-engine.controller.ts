@@ -8,7 +8,7 @@ import {
   Body,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { ROASGuaranteeEngineService } from './roas-guarantee-engine.service';
 
 @Controller('api/v1/roas-guarantee-engine')
