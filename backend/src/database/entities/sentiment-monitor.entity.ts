@@ -10,6 +10,9 @@ export class SentimentMonitor {
   user: User;
 
   @Column()
+  workspaceId: string;
+
+  @Column()
   name: string;
 
   @Column({ nullable: true })

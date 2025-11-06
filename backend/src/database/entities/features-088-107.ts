@@ -251,6 +251,7 @@ export class ProductFeed {
 export class UnifiedAudience {
   @PrimaryGeneratedColumn('uuid') id: string;
   @ManyToOne(() => User) user: User;
+  @Column() workspaceId: string;
   @Column() name: string;
   @Column({ type: 'jsonb' }) inclusionCriteria: any;
   @Column({ type: 'jsonb' }) syncConfig: any;
