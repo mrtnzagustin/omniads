@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { ServerSideTrackingService } from './server-side-tracking.service';
 import { ServerSideTracking } from '../database/entities/server-side-tracking.entity';
 

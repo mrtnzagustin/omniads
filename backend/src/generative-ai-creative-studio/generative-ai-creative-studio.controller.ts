@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { GenerativeAiCreativeStudioService } from './generative-ai-creative-studio.service';
 import { GenerativeAiCreativeStudio } from '../database/entities/generative-ai-creative-studio.entity';
 

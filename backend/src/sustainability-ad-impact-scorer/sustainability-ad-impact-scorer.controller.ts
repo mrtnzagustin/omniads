@@ -8,7 +8,7 @@ import {
   Body,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { SustainabilityAdImpactScorerService } from './sustainability-ad-impact-scorer.service';
 
 @Controller('api/v1/sustainability-ad-impact-scorer')

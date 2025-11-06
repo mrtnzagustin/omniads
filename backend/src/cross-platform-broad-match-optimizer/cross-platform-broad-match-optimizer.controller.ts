@@ -8,7 +8,7 @@ import {
   Body,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CrossPlatformBroadMatchOptimizerService } from './cross-platform-broad-match-optimizer.service';
 
 @Controller('api/v1/cross-platform-broad-match-optimizer')

@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { EmailAdSyncEngineService } from './email-ad-sync-engine.service';
 import { EmailAdSyncEngine } from '../database/entities/email-ad-sync-engine.entity';
 

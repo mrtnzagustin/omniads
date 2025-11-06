@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { AdvancedAbTestFrameworkService } from './advanced-ab-test-framework.service';
 import { AdvancedAbTestFramework } from '../database/entities/advanced-ab-test-framework.entity';
 

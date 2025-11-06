@@ -1,0 +1,268 @@
+name: Speckit Enforcement
+
+# This workflow enforces Speckit-first development for all code changes.
+# It mirrors the pre-commit hook logic to ensure consistency in CI/CD.
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+      - 'feature/**'
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  speckit-validation:
+    name: Speckit Compliance Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate Speckit compliance for feature branches
+        run: |
+          set -euo pipefail
+
+          echo "🔍 Speckit Constitution Compliance Check (CI)"
+          echo ""
+
+          # Determine branch name
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            BRANCH_NAME="${{ github.head_ref }}"
+            BASE_REF="${{ github.event.pull_request.base.sha }}"
+          else
+            BRANCH_NAME="${{ github.ref_name }}"
+            BASE_REF="HEAD~1"
+          fi
+
+          echo "Branch: $BRANCH_NAME"
+          echo "Base: $BASE_REF"
+          echo ""
+
+          # Get changed files
+          CHANGED_FILES=$(git diff --name-only $BASE_REF HEAD || echo "")
+          BACKEND_CHANGES=$(echo "$CHANGED_FILES" | grep "^backend/src/" || true)
+          FRONTEND_CHANGES=$(echo "$CHANGED_FILES" | grep "^frontend/src/" || true)
+
+          # If NO backend or frontend code changes, skip validation
+          if [ -z "$BACKEND_CHANGES" ] && [ -z "$FRONTEND_CHANGES" ]; then
+              echo "ℹ️  No backend/frontend source changes detected."
+              echo "✅ Skipping Speckit validation."
+              echo ""
+              exit 0
+          fi
+
+          echo "📋 Backend/Frontend code changes detected."
+          echo ""
+
+          # Extract feature number from branch name (e.g., 001-feature-name -> 001)
+          FEATURE_NUM=$(echo "$BRANCH_NAME" | grep -oE '^[0-9]{3}' || true)
+
+          if [ -n "$FEATURE_NUM" ]; then
+              echo "🔢 Feature branch detected: $BRANCH_NAME (Feature #$FEATURE_NUM)"
+              echo ""
+
+              # Find matching spec directory
+              MATCHING_SPEC=$(find specs -maxdepth 1 -type d -name "${FEATURE_NUM}-*" 2>/dev/null | head -n 1 || true)
+
+              if [ -z "$MATCHING_SPEC" ]; then
+                  echo "❌ CI FAILED: No matching spec directory found for feature $FEATURE_NUM"
+                  echo ""
+                  echo "📂 Expected something like: specs/${FEATURE_NUM}-feature-name/"
+                  echo ""
+                  echo "🔧 To fix:"
+                  echo "   1. Create the spec directory"
+                  echo "   2. Add spec.md, plan.md, and tasks.md"
+                  echo "   3. Use templates from .specify/templates/"
+                  echo ""
+                  echo "📖 See .specify/AI_AGENT_INSTRUCTIONS.md for details"
+                  exit 1
+              fi
+
+              echo "   ✅ Found spec directory: $MATCHING_SPEC"
+              echo ""
+
+              # Check for required files and ensure they are not empty
+              MISSING_FILES=""
+              EMPTY_FILES=""
+
+              # Check spec.md
+              if [ ! -f "$MATCHING_SPEC/spec.md" ]; then
+                  MISSING_FILES="$MISSING_FILES\n   ❌ spec.md (missing)"
+              elif [ ! -s "$MATCHING_SPEC/spec.md" ]; then
+                  EMPTY_FILES="$EMPTY_FILES\n   ⚠️  spec.md (empty)"
+              else
+                  echo "   ✅ spec.md exists and is not empty"
+              fi
+
+              # Check plan.md
+              if [ ! -f "$MATCHING_SPEC/plan.md" ]; then
+                  MISSING_FILES="$MISSING_FILES\n   ❌ plan.md (missing)"
+              elif [ ! -s "$MATCHING_SPEC/plan.md" ]; then
+                  EMPTY_FILES="$EMPTY_FILES\n   ⚠️  plan.md (empty)"
+              else
+                  echo "   ✅ plan.md exists and is not empty"
+              fi
+
+              # Check tasks.md
+              if [ ! -f "$MATCHING_SPEC/tasks.md" ]; then
+                  MISSING_FILES="$MISSING_FILES\n   ❌ tasks.md (missing)"
+              elif [ ! -s "$MATCHING_SPEC/tasks.md" ]; then
+                  EMPTY_FILES="$EMPTY_FILES\n   ⚠️  tasks.md (empty)"
+              else
+                  echo "   ✅ tasks.md exists and is not empty"
+              fi
+
+              # Block workflow if files are missing or empty
+              if [ -n "$MISSING_FILES" ] || [ -n "$EMPTY_FILES" ]; then
+                  echo ""
+                  echo "❌ CI FAILED: Required Speckit files are missing or empty:"
+
+                  if [ -n "$MISSING_FILES" ]; then
+                      echo -e "$MISSING_FILES"
+                  fi
+
+                  if [ -n "$EMPTY_FILES" ]; then
+                      echo -e "$EMPTY_FILES"
+                  fi
+
+                  echo ""
+                  echo "📖 According to .specify/memory/constitution.md:"
+                  echo "   All features MUST have complete spec.md, plan.md, and tasks.md"
+                  echo ""
+                  echo "🔧 To fix:"
+                  echo "   1. Use templates in .specify/templates/"
+                  echo "   2. Or use: ./.specify/scripts/bash/generate-spec-docs.sh $FEATURE_NUM"
+                  echo "   3. Fill in all required sections"
+                  echo ""
+                  exit 1
+              fi
+
+              echo ""
+              echo "✅ All Speckit files present and validated"
+          else
+              echo "ℹ️  Branch '$BRANCH_NAME' does not follow NNN-feature-name pattern"
+              echo "   Skipping Speckit validation (but tests will still run)"
+          fi
+
+  backend-tests:
+    name: Backend Tests
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install backend dependencies
+        run: |
+          cd backend
+          npm ci
+
+      - name: Run backend tests (same command as pre-commit hook)
+        run: |
+          cd backend
+          npm test -- --passWithNoTests
+
+  frontend-tests:
+    name: Frontend Tests
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Run frontend tests (same command as pre-commit hook)
+        run: |
+          cd frontend
+          npm run test:run -- --passWithNoTests
+
+  build-validation:
+    name: Build Validation
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install and build backend
+        run: |
+          cd backend
+          npm ci
+          npm run build
+
+      - name: Install and build frontend
+        run: |
+          cd frontend
+          npm ci
+          npm run build
+
+      - name: Validate builds succeeded
+        run: |
+          echo "✅ All builds completed successfully"
+
+  summary:
+    name: Enforcement Summary
+    runs-on: ubuntu-latest
+    needs: [speckit-validation, backend-tests, frontend-tests]
+    if: always()
+
+    steps:
+      - name: Check all jobs passed
+        run: |
+          echo "📊 Speckit Enforcement Summary"
+          echo "================================"
+          echo ""
+          echo "Speckit Validation: ${{ needs.speckit-validation.result }}"
+          echo "Backend Tests: ${{ needs.backend-tests.result }}"
+          echo "Frontend Tests: ${{ needs.frontend-tests.result }}"
+          echo ""
+
+          if [[ "${{ needs.speckit-validation.result }}" != "success" ]]; then
+            echo "❌ Speckit validation failed"
+            exit 1
+          fi
+
+          if [[ "${{ needs.backend-tests.result }}" != "success" ]] && [[ "${{ needs.backend-tests.result }}" != "skipped" ]]; then
+            echo "❌ Backend tests failed"
+            exit 1
+          fi
+
+          if [[ "${{ needs.frontend-tests.result }}" != "success" ]] && [[ "${{ needs.frontend-tests.result }}" != "skipped" ]]; then
+            echo "❌ Frontend tests failed"
+            exit 1
+          fi
+
+          echo "✅ All Speckit enforcement checks passed!"

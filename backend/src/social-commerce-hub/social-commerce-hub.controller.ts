@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { SocialCommerceHubService } from './social-commerce-hub.service';
 import { SocialCommerceHub } from '../database/entities/social-commerce-hub.entity';
 

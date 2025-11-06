@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CustomerJourneyMapperService } from './customer-journey-mapper.service';
 import { CustomerJourneyMapper } from '../database/entities/customer-journey-mapper.entity';
 

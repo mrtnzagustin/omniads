@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { InfluencerCampaignManagerService } from './influencer-campaign-manager.service';
 import { InfluencerCampaignManager } from '../database/entities/influencer-campaign-manager.entity';
 
