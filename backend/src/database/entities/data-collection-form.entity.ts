@@ -10,6 +10,9 @@ export class DataCollectionForm {
   user: User;
 
   @Column()
+  workspaceId: string;
+
+  @Column()
   name: string;
 
   @Column({ type: 'jsonb', nullable: true })
