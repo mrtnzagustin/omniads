@@ -22,6 +22,57 @@
    - Tech stack details
    - Getting started guide
 
+## 🔒 Global Workflow Rules (Speckit-First)
+
+**CRITICAL: These rules apply to EVERY coding or refactoring task. NO EXCEPTIONS.**
+
+### Before ANY Code Changes:
+
+1. **Always read these files first:**
+   - `.specify/memory/constitution.md` - The source of truth
+   - `.specify/AI_AGENT_INSTRUCTIONS.md` - Your workflow guide
+   - `README.md` - Project overview
+
+2. **Detect the current git branch name:**
+   ```bash
+   git branch --show-current
+   ```
+
+3. **If the branch name starts with a numeric feature ID (e.g., `001-feature-name`, `042-analytics`):**
+
+   a. **Extract the feature number** (e.g., `001`, `042`)
+
+   b. **Locate the matching folder** under `specs/NNN-*/`
+
+   c. **Read ALL of these files:**
+      - `specs/NNN-*/spec.md` - Feature specification
+      - `specs/NNN-*/plan.md` - Implementation plan
+      - `specs/NNN-*/tasks.md` - Task breakdown
+
+   d. **If the spec folder OR any of these files do NOT exist:**
+      - ❌ **DO NOT write or modify ANY code**
+      - ✅ **STOP and propose creating the missing Speckit artifacts**
+      - ✅ Use templates from `.specify/templates/`
+      - ✅ Create the complete spec/plan/tasks structure
+      - ✅ **ONLY THEN** proceed with code changes
+
+4. **Never modify `backend/src/` or `frontend/src/` in ways that are not explicitly covered by the current spec/plan/tasks.**
+   - If the user requests something outside the spec, first update the spec/plan/tasks
+   - Then implement the changes
+
+5. **Respect the Husky pre-commit checks:**
+   - The `.husky/pre-commit` hook enforces Speckit compliance and test quality
+   - ❌ **NEVER suggest using `git commit --no-verify`** to bypass checks
+   - ✅ If the hook fails, fix the issues it identifies
+   - ✅ The hook is there to protect code quality and workflow compliance
+
+### Non-Compliant Branch Names:
+
+If the branch name does NOT follow the `NNN-feature-name` pattern:
+- The Speckit validation will be skipped (informational message will be shown)
+- However, tests and build checks will still run
+- Consider creating a proper feature branch with Speckit documentation for non-trivial changes
+
 ## 📋 Workflow Summary
 
 ### For ANY Feature Implementation:
