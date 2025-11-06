@@ -172,15 +172,10 @@ jobs:
           cd backend
           npm ci
 
-      - name: Run backend tests
+      - name: Run backend tests (same command as pre-commit hook)
         run: |
           cd backend
           npm test -- --passWithNoTests
-
-      - name: Check test coverage
-        run: |
-          cd backend
-          npm run test:cov || echo "⚠️  Coverage check completed"
 
   frontend-tests:
     name: Frontend Tests
@@ -203,15 +198,10 @@ jobs:
           cd frontend
           npm ci
 
-      - name: Run frontend tests
+      - name: Run frontend tests (same command as pre-commit hook)
         run: |
           cd frontend
           npm run test:run -- --passWithNoTests
-
-      - name: Check test coverage
-        run: |
-          cd frontend
-          npm run test:coverage || echo "⚠️  Coverage check completed"
 
   build-validation:
     name: Build Validation
@@ -253,6 +243,7 @@ jobs:
       - name: Check all jobs passed
         run: |
           echo "📊 Speckit Enforcement Summary"
+          echo "================================"
           echo ""
           echo "Speckit Validation: ${{ needs.speckit-validation.result }}"
           echo "Backend Tests: ${{ needs.backend-tests.result }}"
